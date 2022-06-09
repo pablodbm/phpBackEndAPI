@@ -8,8 +8,9 @@ $userId = 2;
 
 $amount = mysqli_real_escape_string($mysqli,$_GET["amount"]);
 $walletName = mysqli_real_escape_string($mysqli,$_GET["walletName"]);
+$monthlyLimit = mysqli_real_escape_string($mysqli,$_GET["monthlyLimit"]);
 
-$createWallet = "INSERT INTO wallets (amount,walletName,userId) VALUES ($amount,'$walletName',$userId)";
+$createWallet = "INSERT INTO wallets (amount,walletName,userId,monthlyLimit) VALUES ($amount,'$walletName',$userId,$monthlyLimit)";
 $mysqli->query($createWallet);
 $responseArray = array("response"=>"walletCreated");
 echo json_encode($responseArray);

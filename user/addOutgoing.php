@@ -13,9 +13,30 @@ $date = date('Y-m-d H:i:s');
 //ogarnac czemu sekundy nie wchodza do sql
 // $userId = $_SESSION["userId"];
 $userId = 2;
-// $addoutgoing = "INSERT INTO outgoings (title,source,category,type,amount,userId,date) VALUES ('$title','$source','$category','$type',$amount,$userId,'$date')";
+
+//sprawdzenia przekroczenia limitu
+$month = date("m");
+$getTransactionsFromThisMonth = "SELECT SUM(amount) as total FROM `outgoings` WHERE MONTH(date) = $month";
+$transactions = $mysqli->query($getTransactionsFromThisMonth);
+$transactionsAssoc = $transactions->fetch_assoc();
+$totalMontlyAmount = $transactionsAssoc["total"];
+
+//pobranie limitu portfela
+$getUserLimit = "SELECT monthlyLimit FROM wallets WHERE userId=$userId";
+$limitResponse = $mysqli->query($getUserLimit);
+$userLimit = $limitResponse->fetch_assoc();
+$limit = $userLimit["monthlyLimit"];
+
+if($totalMontlyAmount+$amount<=$limit){
+    // $addoutgoing = "INSERT INTO outgoings (title,source,category,type,amount,userId,date) VALUES ('$title','$source','$category','$type',$amount,$userId,'$date')";
 $addoutgoing = "INSERT INTO outgoings (title,source,category,amount,userId,date) VALUES ('$title','$source','$category',$amount,$userId,'$date')";
 $mysqli->query($addoutgoing);
 $response = array("response"=>"outgoingAdd");
 echo json_encode($response);
+}else{
+    $response = array("response"=>"monthlyLimit");
+    echo json_encode($response);
+
+}
+
 ?>
