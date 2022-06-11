@@ -18,43 +18,43 @@ $userId = 2;
 $filterType = $_GET["filterType"];
 switch($filterType){
     case 1:{
-        $filterQuery = "SELECT * FROM incomes WHERE userId=$userId";
+        $filterQuery = "SELECT * FROM transactions WHERE userId=$userId AND type='income'";
         break;
     }
     case 2:{
-        $filterQuery = "SELECT * FROM incomes WHERE userId=$userId ORDER BY date DESC";
+        $filterQuery = "SELECT * FROM transactions WHERE userId=$userId AND type='income' ORDER BY date DESC";
         break;
     }
     case 3:{
-        $filterQuery = "SELECT * FROM incomes WHERE userId=$userId ORDER BY date ASC";
+        $filterQuery = "SELECT * FROM transactions WHERE userId=$userId AND type='income' ORDER BY date ASC";
         break;
     }
     case 4:{
-        $filterQuery = "SELECT * FROM incomes WHERE userId=$userId ORDER BY amount DESC";
+        $filterQuery = "SELECT * FROM transactions WHERE userId=$userId AND type='income' ORDER BY amount DESC";
         break;
     }
     case 5:{
-        $filterQuery = "SELECT * FROM incomes WHERE userId=$userId ORDER BY amount ASC";
+        $filterQuery = "SELECT * FROM transactions WHERE userId=$userId AND type='income' ORDER BY amount ASC";
         break;
     }
     case 6:{
-        $filterQuery = "SELECT * FROM outgoings WHERE userId=$userId";
+        $filterQuery = "SELECT * FROM transactions WHERE userId=$userId AND type='outgoing'";
         break;
     }
     case 7:{
-        $filterQuery = "SELECT * FROM outgoings WHERE userId=$userId ORDER BY date DESC";
+        $filterQuery = "SELECT * FROM transactions WHERE userId=$userId AND type='outgoing' ORDER BY date DESC";
         break;
     }
     case 8:{
-        $filterQuery = "SELECT * FROM outgoings WHERE userId=$userId ORDER BY date ASC";
+        $filterQuery = "SELECT * FROM transactions WHERE userId=$userId AND type='outgoing' ORDER BY date ASC";
         break;
     }
     case 9:{
-        $filterQuery = "SELECT * FROM outgoings WHERE userId=$userId ORDER BY amount DESC";
+        $filterQuery = "SELECT * FROM transactions WHERE userId=$userId AND type='outgoing' ORDER BY amount DESC";
         break;
     }
     case 10:{
-        $filterQuery = "SELECT * FROM outgoings WHERE userId=$userId ORDER BY amount ASC";
+        $filterQuery = "SELECT * FROM transactions WHERE userId=$userId AND type='outgoing' ORDER BY amount ASC";
         break;
     }
 

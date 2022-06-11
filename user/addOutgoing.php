@@ -16,7 +16,7 @@ $userId = 2;
 
 //sprawdzenia przekroczenia limitu
 $month = date("m");
-$getTransactionsFromThisMonth = "SELECT SUM(amount) as total FROM `outgoings` WHERE MONTH(date) = $month";
+$getTransactionsFromThisMonth = "SELECT SUM(amount) as total FROM `transactions` WHERE MONTH(date) = $month AND userId=$userId";
 $transactions = $mysqli->query($getTransactionsFromThisMonth);
 $transactionsAssoc = $transactions->fetch_assoc();
 $totalMontlyAmount = $transactionsAssoc["total"];
@@ -29,7 +29,7 @@ $limit = $userLimit["monthlyLimit"];
 
 if($totalMontlyAmount+$amount<=$limit){
     // $addoutgoing = "INSERT INTO outgoings (title,source,category,type,amount,userId,date) VALUES ('$title','$source','$category','$type',$amount,$userId,'$date')";
-$addoutgoing = "INSERT INTO outgoings (title,source,category,amount,userId,date) VALUES ('$title','$source','$category',$amount,$userId,'$date')";
+$addoutgoing = "INSERT INTO transactions (title,source,category,amount,userId,date,type) VALUES ('$title','$source','$category',$amount,$userId,'$date','outgoing')";
 $mysqli->query($addoutgoing);
 $response = array("response"=>"outgoingAdd");
 echo json_encode($response);

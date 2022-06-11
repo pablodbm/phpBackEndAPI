@@ -11,7 +11,7 @@ $amount = mysqli_real_escape_string($mysqli,$_GET["amount"]);
 $date = mysqli_real_escape_string($mysqli,$_GET["date"]);
 $userId = 2;
 //user id z sesji
-$updateOutgoing = "UPDATE outgoings SET title='$title',source='$source',category='$category',amount='$amount',date='$date' WHERE userId=$userId";
+$updateOutgoing = "UPDATE transactions SET title='$title',source='$source',category='$category',amount='$amount',date='$date' WHERE userId=$userId AND type='outgoing'";
 echo $updateOutgoing;
 $mysqli->query($updateOutgoing);
 $response = array("response"=>"outgoingChanged");

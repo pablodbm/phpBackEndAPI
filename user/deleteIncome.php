@@ -9,7 +9,7 @@ session_start();
 $userId = 2;
 $incomeId = $_GET["incomeId"];
 // $deleteOutgoing = "DELETE FROM outgoings WHERE id=$outgoingId AND userId = ".$_SESSION["userId"]."";
-$deleteIncome = "DELETE FROM incomes WHERE id=$incomeId AND userId = $userId";
+$deleteIncome = "DELETE FROM transactions WHERE id=$incomeId AND userId = $userId AND type='income'";
 $mysqli->query($deleteIncome);
 $response = array("response"=>"incomeDeleted");
 echo json_encode($response);

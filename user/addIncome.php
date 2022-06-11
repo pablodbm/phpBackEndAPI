@@ -13,7 +13,7 @@ $date = date('Y-m-d H:i:s');
 // $userId = $_SESSION["userId"];
 $userId = 2;
 // $addIncome = "INSERT INTO incomes (title,source,category,type,amount,userId,date) VALUES ('$title','$source','$category','$type',$amount,$userId,'$date')";
-$addIncome = "INSERT INTO incomes (title,source,category,amount,userId,date) VALUES ('$title','$source','$category',$amount,$userId,'$date')";
+$addIncome = "INSERT INTO transactions (title,source,category,amount,userId,date,type) VALUES ('$title','$source','$category',$amount,$userId,'$date','income')";
 echo $addIncome;
 $mysqli->query($addIncome);
 $response = array("response"=>"incomeAdd");

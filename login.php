@@ -15,7 +15,6 @@ if($loginResult->num_rows==0){
 }else{
     //udalo sie zalogowac
     $responseData = $loginResult->fetch_assoc();
-
     $_SESSION["userLogged"] = true;
     $_SESSION["userId"] = $responseData["userId"];
     $response["response"] = $responseData;

@@ -11,7 +11,7 @@ $amount = mysqli_real_escape_string($mysqli,$_GET["amount"]);
 $date = mysqli_real_escape_string($mysqli,$_GET["date"]);
 $userId = 2;
 //user id z sesji
-$updateIncome = "UPDATE incomes SET title='$title',source='$source',category='$category',amount='$amount',date='$date' WHERE userId=$userId";
+$updateIncome = "UPDATE transactions SET title='$title',source='$source',category='$category',amount='$amount',date='$date' WHERE userId=$userId AND type='income'";
 echo $updateIncome;
 $mysqli->query($updateIncome);
 $response = array("response"=>"incomeChanged");
