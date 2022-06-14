@@ -16,7 +16,7 @@ $userId = 2;
 
 //sprawdzenia przekroczenia limitu
 $month = date("m");
-$getTransactionsFromThisMonth = "SELECT SUM(amount) as total FROM `transactions` WHERE MONTH(date) = $month AND userId=$userId";
+$getTransactionsFromThisMonth = "SELECT SUM(amount) as total FROM `transactions` WHERE MONTH(date) = $month AND userId=$userId AND type='outgoing'";
 $transactions = $mysqli->query($getTransactionsFromThisMonth);
 $transactionsAssoc = $transactions->fetch_assoc();
 $totalMontlyAmount = $transactionsAssoc["total"];
