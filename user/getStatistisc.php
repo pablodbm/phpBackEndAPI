@@ -15,7 +15,6 @@ $getIncomesFromThisMonth = "SELECT SUM(amount) as total FROM `transactions` WHER
 $getIncomesFromPreviousMonth = "SELECT SUM(amount) as total FROM `transactions` WHERE MONTH(date) = '$previous_month' AND userId=$userId AND type='income'";
 $getIncomesFromTheLatest = "SELECT SUM(amount) as total FROM `transactions` WHERE MONTH(date) = '$theLatest_month' AND userId=$userId AND type='income'";
 
-
 $OutThisMonth = $mysqli->query($getoutgoingsFromThisMonth);
 $OutPrev = $mysqli->query($getoutgoingsFromPreviousMonth);
 $OutLatest = $mysqli->query($getoutgoingsFromPTheLatest);
